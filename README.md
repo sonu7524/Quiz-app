@@ -44,15 +44,7 @@ npm install
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to access the application locally.
-
-## Contributing
-
-If you wish to contribute to Quizine, please follow the guidelines outlined in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+Visit [http://localhost:3000](http://localhost:5173) to access the application locally.
 
 ## Contact
 
