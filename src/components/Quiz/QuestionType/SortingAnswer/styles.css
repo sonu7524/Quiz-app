@@ -1,0 +1,23 @@
+.sorting-question{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 4rem 0rem;
+}
+.question{
+    display: flex;
+    gap: 1rem;
+}
+.form-single-choice{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.option{
+    display: flex;
+    gap: 1rem;
+}
+  

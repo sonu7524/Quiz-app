@@ -1,0 +1,31 @@
+.matrix{
+    padding: 1rem;
+}
+
+.criterion-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sortable-elements{
+    display: flex;
+    gap: 1rem;
+}
+.criterion{
+
+}
+
+.set-answer{
+    border: 1px solid black;
+    width: 20%;
+    padding: 0rem 1rem; 
+}
+tr{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+td{
+    width: 20%;
+}
