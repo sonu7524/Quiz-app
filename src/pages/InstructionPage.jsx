@@ -10,6 +10,7 @@ export default function InstructionPage() {
   const handleStartClick = () => {
     if (isChecked) {
       // Redirect to the quiz page
+      localStorage.setItem('quizId', 1);
       navigate(`/quiz/que/1`);
     } else {
       alert('Please acknowledge that you have read the instructions.');

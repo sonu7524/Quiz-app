@@ -12,7 +12,7 @@ export default function QuizPage() {
     const history = useNavigate();
     const questionsPerRow = Math.floor(totalQuestions / 4);
     const [currentQuestion, setCurrentQuestion] = useState(parseInt(queNo));
-    const [time, setTime] = useState(parseInt(localStorage.getItem('timer')) || 1800);
+    const [time, setTime] = useState(parseInt(localStorage.getItem('timer')) || 30);
     const [timeRemaining, setTimeRemaining] = useState({});
     const [isFlagged, setIsFlagged] = useState(false);
 
@@ -25,7 +25,6 @@ export default function QuizPage() {
     );
 
     useEffect(() => {
-      localStorage.setItem('currentQuestion', JSON.stringify(queNo));
       if (localStorage.getItem('visitedQuestions')) {
         setVisitedQuestions(JSON.parse(localStorage.getItem('visitedQuestions')));
       }
@@ -54,6 +53,7 @@ export default function QuizPage() {
       };
 
     }, [time, history, currentQuestion, queNo]);
+
 
     const renderQuestionBoxes = () => {
         

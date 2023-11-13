@@ -37,7 +37,7 @@ function Signup() {
 
                 const existingUser = localStorage.getItem(email);
                 if(!existingUser){
-                    localStorage.setItem(email, JSON.stringify(user));
+                    sessionStorage.setItem(email, JSON.stringify(user));
                     window.location.href = "/";
                     setFullName("");
                     setEmail("");

@@ -6,16 +6,15 @@ import Loader from "./components/common/Loader";
 import AccountPage from "./pages/AccountPage";
 import { QuestionProvider } from "./QuestionProvider";
 import QuizPage from "./pages/QuizPage";
-const LoginPage = lazy(() => import("./pages/LoginPage"));
-const DashboardPage = lazy(() => import("./pages/DashboardPage"));
 import ResultPage from "./pages/ResultPage";
 import InstructionPage from "./pages/InstructionPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const authToken = sessionStorage.getItem("auth_token");
   const quizId = localStorage.getItem("quizId");
-  const currentQuestion = parseInt(localStorage.getItem("currentQuestion")) || 0;
-
+  const currentQuestion = parseInt(localStorage.getItem("currentQuestion"));
+  console.log(currentQuestion)
   return (
     <div className="App">
       <QuestionProvider>
@@ -24,11 +23,11 @@ function App() {
         <Routes>
           <Route path="/register" element={<SignupPage />} />
           <Route path="/" element={<LandingPage />} />
-          <Route path="quiz/result" element={<ResultPage />} />
+          <Route path="/results" element={<ResultPage />} />
           {authToken ? <Route path="/login" element={<Navigate to="/dashboard" />} /> : <Route path="/login" element={<LoginPage />} />}
           {authToken ? <Route path="/quiz/*" element={<InstructionPage />} /> : <Route path="/quiz/*" element={<Navigate to="/login" />} />}
           {authToken ? <Route path="/account" element={<AccountPage />} /> : <Route path="/account" element={<Navigate to="/login" />} />}
-          {currentQuestion === 0 ? <Route path="/quiz/*" element={<InstructionPage />} /> : <Route path="/quiz/*" element={<Navigate to={`/quiz/${quizId}/que/${currentQuestion}`} />} />}
+          {!quizId ? <Route path="/quiz" element={<InstructionPage />} /> : <Route path="/quiz" element={<Navigate to={`/quiz/que/${currentQuestion}`} />} />}
           <Route path="/quiz/que/:queNo" element={<QuizPage />} />
         </Routes>
         </Suspense>

@@ -24,13 +24,15 @@ const Login = () => {
     
       if (email && password) {
         try {
-          const user = JSON.parse(localStorage.getItem(email));
+          const user = JSON.parse(sessionStorage.getItem(email));
           // Check if the response contains a token
           if (user) {
             // Redirect to the "/dashboard" page
             window.location.href = "/quiz";
             // Set the token in the sessionStorage
             sessionStorage.setItem("auth_token", generateToken());
+            sessionStorage.setItem("username", user.username);
+            sessionStorage.setItem("email", user.email);
           } else {
             setError("Account not found");
           }

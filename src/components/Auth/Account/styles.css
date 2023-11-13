@@ -1,0 +1,19 @@
+.account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0rem;
+    background-color: var(--lightpurple);
+    height: 90vh;
+  }
+  .account-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    width: 40vw;
+    font-size: 1.2rem;
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.1);
+    padding-bottom: 1rem;
+  }
