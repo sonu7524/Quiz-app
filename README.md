@@ -56,9 +56,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Contact
 
-For any inquiries or feedback, please contact the project creator at your.email@example.com.
-
----
-
-Feel free to customize the README further with specific instructions, additional features, or any other relevant information about your Quizine project.
+For any inquiries or feedback, please contact the project creator at sonudaryani135@gmail.com.
 
