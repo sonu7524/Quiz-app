@@ -16,7 +16,7 @@ export const calculateScore= (questionArray, userResponse) => {
         if (question) {
             if (Array.isArray(userResponse[i]?.answer)) {
                 // For multiple-choice questions
-                const isCorrect = JSON.stringify(userResponse[i]?.answer.sort()) === JSON.stringify(question.correctAnswer.sort());
+                const isCorrect = JSON.stringify(userResponse[i]?.answer.sort()).toLowerCase() === JSON.stringify(question.correctAnswer.sort()).toLowerCase();
                 totalScore += isCorrect ? 4 : -1;
                 correctAnswers += isCorrect ? 1 : 0;
                 incorrectAnswers += isCorrect ? 0 : 1;
@@ -24,6 +24,8 @@ export const calculateScore= (questionArray, userResponse) => {
                 // For single-choice questions
                 const isCorrect = userResponse[i]?.answer === question?.correctAnswer;
                 totalScore += isCorrect ? 4 : -1;
+                correctAnswers += isCorrect ? 1 : 0;
+                incorrectAnswers += isCorrect ? 0 : 1;
             }
         }
     }
