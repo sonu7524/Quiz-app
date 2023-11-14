@@ -2,6 +2,12 @@
 
 Quizine is a modern and feature-rich quiz web application built using Vite and React. This project aims to provide users with an engaging and diverse quiz-taking experience. With a beautiful landing page, smooth navigation, and various question types, Quizine is designed to cater to both educational and entertainment purposes.
 
+![Screenshot (45)](https://github.com/sonu7524/Quiz-app/assets/100096513/595d0793-b949-4a88-9991-0c673130a5fa)
+![Screenshot (48)](https://github.com/sonu7524/Quiz-app/assets/100096513/5da15918-fd8b-4540-b933-48b4201100e9)
+
+![Screenshot (44)](https://github.com/sonu7524/Quiz-app/assets/100096513/60badc4e-3a47-4312-bcc5-8eff8c6a2fc7)
+
+
 ## Features
 
 ### Authentication Pages
