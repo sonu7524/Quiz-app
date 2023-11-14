@@ -27,26 +27,26 @@ const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
   const handleSaveAnswer = (state, setState) => {
     const visitedQuestions = JSON.parse(localStorage.getItem('visitedQuestions'));
     if(!visitedQuestions){
-      localStorage.setItem('visitedQuestions', JSON.stringify([queNo]));
-      setVisitedQue([queNo]);
+      localStorage.setItem('visitedQuestions', parseInt(queNo));
+      setVisitedQue(parseInt(queNo));
     }
     else{
-      const index = visitedQuestions.indexOf(queNo);
+      const index = visitedQuestions.indexOf(parseInt(queNo));
       if(index === -1){
-        visitedQuestions.push(queNo);
+        visitedQuestions.push(parseInt(queNo));
         localStorage.setItem('visitedQuestions', JSON.stringify(visitedQuestions));
         setVisitedQue(visitedQuestions);
       }
     }
     const data = {
-      questionId: queNo,
+      questionId: parseInt(queNo),
       answer: state
     }
     console.log(data)
     const userResponse = localStorage.getItem('userResponse');
     if (userResponse) {
       const response = JSON.parse(userResponse);
-      const quesResponse =  response.find((item) => item.questionId === queNo);
+      const quesResponse =  response.find((item) => item.questionId === parseInt(queNo));
       if(quesResponse){
         const index = response.indexOf(quesResponse);
         response[index] = data;
@@ -68,12 +68,12 @@ const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
 
     const flagArray = JSON.parse(localStorage.getItem('flaggedQuestions')) || [];
 
-    if(flagArray.indexOf(queNo) === -1){
-        flagArray.push(queNo);
+    if(flagArray.indexOf(parseInt(queNo)) === -1){
+        flagArray.push(parseInt(queNo));
         localStorage.setItem('flaggedQuestions', JSON.stringify(flagArray));
     }
     else{
-        flagArray.splice(flagArray.indexOf(queNo), 1);
+        flagArray.splice(flagArray.indexOf(parseInt(queNo)), 1);
         localStorage.setItem('flaggedQuestions', JSON.stringify(flagArray));
     }
     setIsFlag(!isFlag);
@@ -100,8 +100,10 @@ const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
             {questionObj?.questionType === "sorting" && <SortingQuestion question={questionObj?.question} options={questionObj?.options} setUserResponse={setUserResponse} correctAnswer={questionObj?.correctAnswer} />}
             {questionObj?.questionType === "freely" && <FreeChoiceQuestion question={questionObj?.question} setUserResponse={setUserResponse} correctAnswer={questionObj?.correctAnswer} />}  
         </div>
-        <div onClick={handleFlagBtn}><ButtonComponent text={isFlag ? 'Unflag' : 'Flag'} /></div>
-        {totalQuestions === parseInt(queNo) && <div className="quiz-submission" onClick={handleSubmit}><ButtonComponent bgColor={"var(--purple)"} text="Submit" /></div>}
+        <div className="question-footer">
+            <div onClick={handleFlagBtn}><ButtonComponent text={isFlag ? 'Unflag' : 'Flag'} /></div>
+            {totalQuestions === parseInt(queNo) && <div className="quiz-submission" onClick={handleSubmit}><ButtonComponent bgColor={"var(--purple)"} text="Submit" /></div>}
+        </div>
       </div>
     );
 };

@@ -1,16 +1,16 @@
 import React from "react";
 import "./styles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Button from "../Button";
 import DirectionsRunRoundedIcon from '@mui/icons-material/DirectionsRunRounded';
 
 export default function Header() {
-
+    const navigate = useNavigate();
     const authToken = sessionStorage.getItem("auth_token");
     const handleLogout = () => {
         sessionStorage.removeItem("auth_token");
-        window.location.href = "/login";
+        navigate("/login");
     }
 
     const isloginMenu =     <div className="login-menu">

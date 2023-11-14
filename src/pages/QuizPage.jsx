@@ -12,7 +12,7 @@ export default function QuizPage() {
     const history = useNavigate();
     const questionsPerRow = Math.floor(totalQuestions / 4);
     const [currentQuestion, setCurrentQuestion] = useState(parseInt(queNo));
-    const [time, setTime] = useState(parseInt(localStorage.getItem('timer')) || 30);
+    const [time, setTime] = useState(parseInt(localStorage.getItem('timer')) || 900);
     const [timeRemaining, setTimeRemaining] = useState({});
     const [isFlagged, setIsFlagged] = useState(false);
 
@@ -27,6 +27,9 @@ export default function QuizPage() {
     useEffect(() => {
       if (localStorage.getItem('visitedQuestions')) {
         setVisitedQuestions(JSON.parse(localStorage.getItem('visitedQuestions')));
+      }
+      else {
+        localStorage.setItem('visitedQuestions', JSON.stringify([]));
       }
       const timer = setInterval(() => {
         if (time > 0) {
@@ -59,12 +62,12 @@ export default function QuizPage() {
         
       const boxes = [];
       for (let i = 1; i <= totalQuestions; i++) {
-        const isVisited = visitedQuestions.includes(i);
+        // const isVisited = visitedQuestions.findIndex((q) => q === i) !== -1;
         const isFlagged = flaggedQuestions.includes(i);
         boxes.push(
           <div
             key={i}
-            className={`question-box ${i === parseInt(queNo) ? 'selected' : ''} ${isVisited ? 'visited' : ''} ${isFlagged ? 'flagged' : ''}`}
+            className={`question-box ${i === parseInt(queNo) ? 'selected' : ''} ${isFlagged ? 'flagged' : ''}`}
             onClick={() => navigate(`/quiz/que/${i}`)}
           >
             {i}
