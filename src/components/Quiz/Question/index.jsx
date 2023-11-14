@@ -101,8 +101,10 @@ const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
             {questionObj?.questionType === "freely" && <FreeChoiceQuestion question={questionObj?.question} setUserResponse={setUserResponse} correctAnswer={questionObj?.correctAnswer} />}  
         </div>
         <div className="question-footer">
-            <div onClick={handleFlagBtn}><ButtonComponent text={isFlag ? 'Unflag' : 'Flag'} /></div>
-            {totalQuestions === parseInt(queNo) && <div className="quiz-submission" onClick={handleSubmit}><ButtonComponent bgColor={"var(--purple)"} text="Submit" /></div>}
+            <div className="question-footer-btn">
+              <div className="quiz-flag" onClick={handleFlagBtn}><ButtonComponent text={isFlag ? 'Unflag' : 'Flag'} /></div>
+              {totalQuestions === parseInt(queNo) && <div className="quiz-submission" onClick={handleSubmit}><ButtonComponent bgColor={"var(--purple)"} text="Submit" /></div>}
+            </div>
         </div>
       </div>
     );

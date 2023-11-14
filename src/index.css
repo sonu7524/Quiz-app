@@ -103,18 +103,18 @@
 }
 
 /* Add styles for the selected question box */
-.question-box .selected {
-  background-color: #3498db; /* Selected question color */
+.selected {
+  background-color: #3498db !important; /* Selected question color */
   color: #fff;
 }
 
 /* Add styles for the visited question box */
-.question-box .visited {
-background-color: #2ecc71 !important; /* Visited question color */
+.visited {
+background-color: #2ecc71; /* Visited question color */
   color: #fff;
 }
 
-.question-box .flag{
+.flag{
   background-color: grey !important;
 }
 

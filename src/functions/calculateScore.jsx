@@ -10,25 +10,29 @@ export const calculateScore= (questionArray, userResponse) => {
         return 0; // or handle the error in a way that makes sense for your application
     }
     
-    for(let i=0; i<userResponse.length; i++){
+    for (let i = 0; i < userResponse.length; i++) {
         const question = questionArray.find(q => q?.questionNumber === userResponse[i]?.questionId);
-        console.log(question);
+    
         if (question) {
-            if (Array.isArray(userResponse[i]?.answer)) {
+            const userAnswer = userResponse[i]?.answer;
+            const correctAnswer = question?.correctAnswer;
+    
+            if (Array.isArray(userAnswer) && Array.isArray(correctAnswer)) {
                 // For multiple-choice questions
-                const isCorrect = JSON.stringify(userResponse[i]?.answer.sort()).toLowerCase() === JSON.stringify(question.correctAnswer.sort()).toLowerCase();
+                const isCorrect = JSON.stringify(userAnswer.map(ans => ans.toLowerCase()).sort()) === JSON.stringify(correctAnswer.map(ans => ans.toLowerCase()).sort());
                 totalScore += isCorrect ? 4 : -1;
                 correctAnswers += isCorrect ? 1 : 0;
                 incorrectAnswers += isCorrect ? 0 : 1;
             } else {
                 // For single-choice questions
-                const isCorrect = userResponse[i]?.answer === question?.correctAnswer;
+                const isCorrect = JSON.stringify(userAnswer).toLowerCase() === JSON.stringify(correctAnswer).toLowerCase();
                 totalScore += isCorrect ? 4 : -1;
                 correctAnswers += isCorrect ? 1 : 0;
                 incorrectAnswers += isCorrect ? 0 : 1;
             }
         }
     }
+    
 
     const answers = {
         totalScore,

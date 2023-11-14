@@ -29,7 +29,7 @@ export default function QuizPage() {
         setVisitedQuestions(JSON.parse(localStorage.getItem('visitedQuestions')));
       }
       else {
-        localStorage.setItem('visitedQuestions', JSON.stringify([]));
+        localStorage.setItem('visitedQuestions', JSON.stringify([1]));
       }
       const timer = setInterval(() => {
         if (time > 0) {
@@ -59,15 +59,14 @@ export default function QuizPage() {
 
 
     const renderQuestionBoxes = () => {
-        
       const boxes = [];
       for (let i = 1; i <= totalQuestions; i++) {
-        // const isVisited = visitedQuestions.findIndex((q) => q === i) !== -1;
+        const isVisited = visitedQuestions.findIndex((q) => q === i) !== -1;
         const isFlagged = flaggedQuestions.includes(i);
         boxes.push(
           <div
             key={i}
-            className={`question-box ${i === parseInt(queNo) ? 'selected' : ''} ${isFlagged ? 'flagged' : ''}`}
+            className={`question-box ${i === parseInt(queNo) ? 'selected' : ''} ${isFlagged ? 'flagged' : ''} ${isVisited ? 'visited' : ''}`}
             onClick={() => navigate(`/quiz/que/${i}`)}
           >
             {i}
