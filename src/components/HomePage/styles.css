@@ -1,11 +1,10 @@
-.home{
+.home-page{
     position: relative;
     display: flex;
     justify-content: space-between;
     padding: 0rem 2rem;
     height:88vh;
     background-color: white;
-    z-index: -1;
     background-color: var(--lightpurple);
 }
 .home-content{

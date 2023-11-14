@@ -24,7 +24,7 @@ function App() {
           <Route path="/register" element={<SignupPage />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/results" element={<ResultPage />} />
-          {authToken ? <Route path="/login" element={<Navigate to="/dashboard" />} /> : <Route path="/login" element={<LoginPage />} />}
+          {authToken ? <Route path="/login" element={<Navigate to="/quiz" />} /> : <Route path="/login" element={<LoginPage />} />}
           {authToken ? <Route path="/quiz/*" element={<InstructionPage />} /> : <Route path="/quiz/*" element={<Navigate to="/login" />} />}
           {authToken ? <Route path="/account" element={<AccountPage />} /> : <Route path="/account" element={<Navigate to="/login" />} />}
           {!quizId ? <Route path="/quiz" element={<InstructionPage />} /> : <Route path="/quiz" element={<Navigate to={`/quiz/que/${currentQuestion}`} />} />}
