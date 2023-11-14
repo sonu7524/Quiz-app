@@ -35,7 +35,7 @@ function Signup() {
                     password: password
                 }
 
-                const existingUser = localStorage.getItem(email);
+                const existingUser = sessionStorage.getItem(email);
                 if(!existingUser){
                     sessionStorage.setItem(email, JSON.stringify(user));
                     window.location.href = "/";

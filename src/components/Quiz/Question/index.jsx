@@ -102,7 +102,7 @@ const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
         </div>
         <div className="question-footer">
             <div className="question-footer-btn">
-              <div className="quiz-flag" onClick={handleFlagBtn}><ButtonComponent text={isFlag ? 'Unflag' : 'Flag'} /></div>
+              <div className="quiz-flag" onClick={handleFlagBtn}><ButtonComponent bgColor={'orange'} text={isFlag ? 'Unflag' : 'Flag'} /></div>
               {totalQuestions === parseInt(queNo) && <div className="quiz-submission" onClick={handleSubmit}><ButtonComponent bgColor={"var(--purple)"} text="Submit" /></div>}
             </div>
         </div>
