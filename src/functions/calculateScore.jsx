@@ -12,13 +12,14 @@ export const calculateScore= (questionArray, userResponse) => {
     
     for (let i = 0; i < userResponse.length; i++) {
         const question = questionArray.find(q => q?.questionNumber === userResponse[i]?.questionId);
-    
+
         if (question) {
             const userAnswer = userResponse[i]?.answer;
             const correctAnswer = question?.correctAnswer;
-    
-            if (Array.isArray(userAnswer) && Array.isArray(correctAnswer)) {
-                // For multiple-choice questions
+
+            if (!userAnswer || (Array.isArray(userAnswer) && userAnswer.length === 0)) {
+                // If userAnswer is empty or an empty array, consider it as unanswered
+            } else if (Array.isArray(userAnswer) && Array.isArray(correctAnswer)) {
                 const isCorrect = JSON.stringify(userAnswer.map(ans => ans.toLowerCase()).sort()) === JSON.stringify(correctAnswer.map(ans => ans.toLowerCase()).sort());
                 totalScore += isCorrect ? 4 : -1;
                 correctAnswers += isCorrect ? 1 : 0;
