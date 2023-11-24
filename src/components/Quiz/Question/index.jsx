@@ -14,6 +14,7 @@ import FreeChoiceQuestion from "../QuestionType/FreeAnswer";
 
 const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
   const { queNo, quizId } = useParams();
+  const navigate = useNavigate();
   let [userResponse, setUserResponse] = useState([]);
   let [ visitedQue, setVisitedQue] = useState([]);
   let[isFlag, setIsFlag] = useState(false);
@@ -80,10 +81,11 @@ const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
 
   const handleSubmit = () => {
     handleSaveAnswer(userResponse, setUserResponse);
-    alert("You have submitted your answer");
-    navigate(`/results`);
+    const confirm = window.confirm("Are you sure you want to submit?");
+    if(confirm){
+      navigate(`/results`);
+    }
   }
-  const navigate = useNavigate();
     return (
       <div className="question-container">
         <div className="question-change">
