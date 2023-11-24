@@ -139,10 +139,13 @@ background-color: #2ecc71; /* Visited question color */
     align-items: center;
     justify-content: center;
     background-color: var(--white);
-    width: 40vw;
+    width: 50vw;
+    height: fit-content;
     font-size: 1.2rem;
     box-shadow: 10px 10px 5px rgba(0,0,0,0.1);
     padding-bottom: 1rem;
+    gap: 1rem;
+    border-radius: 10px;
 }
 
 table{

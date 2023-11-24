@@ -6,9 +6,9 @@ export default function AccountPage() {
     let[user,setUser] = useState({});
 
     useEffect(() => {
-        const username = sessionStorage.getItem("username");
-        const email = sessionStorage.getItem("email");
-        const userId = sessionStorage.getItem("user_id");
+        const username = localStorage.getItem("username");
+        const email = localStorage.getItem("email");
+        const userId = localStorage.getItem("userId");
         setUser({username,email,userId});
     }, []);
     return (

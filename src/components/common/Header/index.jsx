@@ -7,9 +7,9 @@ import DirectionsRunRoundedIcon from '@mui/icons-material/DirectionsRunRounded';
 
 export default function Header() {
     const navigate = useNavigate();
-    const authToken = sessionStorage.getItem("auth_token");
+    const authToken = localStorage.getItem("auth_token");
     const handleLogout = () => {
-        sessionStorage.removeItem("auth_token");
+        localStorage.removeItem("auth_token");
         navigate("/login");
     }
 

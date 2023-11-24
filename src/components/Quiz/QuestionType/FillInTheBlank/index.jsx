@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './styles.css'; // Make sure to create a corresponding CSS file
 import { useParams } from 'react-router-dom';
 import ButtonComponent from '../../../common/Button';
-import { checkAnswer } from '../../../../functions/checkAnswer';
 
 const FillInTheBlanks = ({ question, pattern, setUserResponse, correctAnswer }) => {
   const blanksRegex = /{Blank}/g;

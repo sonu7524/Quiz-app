@@ -1,13 +1,24 @@
 import QuestionComponent from "../components/Quiz/Question";
-import ButtonComponent from "../components/common/Button";
 import React, { useState, useEffect } from 'react';
-import { useQuestionContext } from '../QuestionProvider';
+import { getQuestion } from '../functions/getQuestion';
 import { useParams, useNavigate } from 'react-router-dom';
 
 export default function QuizPage() {
+
     let { quizId, queNo } = useParams();
     const navigate = useNavigate();
-    const { questionArray } = useQuestionContext();
+    const [questionArray, setQuestionArray] = useState([]);
+
+    useEffect(() => {
+      getData();  
+    }, []);
+    
+    async function getData() {
+      const questions = await getQuestion("001q");
+      setQuestionArray(questions);
+    }
+
+
     const totalQuestions = questionArray.length;
     const history = useNavigate();
     const questionsPerRow = Math.floor(totalQuestions / 4);

@@ -9,13 +9,11 @@ import { useEffect, useState } from "react";
 import FillInTheBlanks from "../QuestionType/FillInTheBlank";
 import SortingQuestion from "../QuestionType/SortingAnswer";
 import FreeChoiceQuestion from "../QuestionType/FreeAnswer";
-import { calculateScore } from "../../../functions/calculateScore";
-import { useQuestionContext } from "../../../QuestionProvider";
+
 
 
 const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
   const { queNo, quizId } = useParams();
-  const { questionArray } = useQuestionContext();
   let [userResponse, setUserResponse] = useState([]);
   let [ visitedQue, setVisitedQue] = useState([]);
   let[isFlag, setIsFlag] = useState(false);

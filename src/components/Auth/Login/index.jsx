@@ -15,24 +15,26 @@ const Login = () => {
     const handlePassword = (e)=>{
         setPassword(e.target.value);
     }
-
-    const generateToken = () => {
-        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    }
     const handleSubmit = async (e) => {
       e.preventDefault();
     
       if (email && password) {
         try {
-          const user = JSON.parse(sessionStorage.getItem(email));
+          const response = await axios.post(
+            "http://localhost:5000/api/auth/login",
+            {
+              email,
+              password,
+            }
+          );
           // Check if the response contains a token
-          if (user) {
-            // Redirect to the "/dashboard" page
+          if (response.status === 200) {
+            const user = response.data;
+            localStorage.setItem("userId", user.userId);
+            localStorage.setItem("auth_token", user.authToken);
+            localStorage.setItem("username", user.username);
+            localStorage.setItem("email", user.email);
             window.location.href = "/quiz";
-            // Set the token in the sessionStorage
-            sessionStorage.setItem("auth_token", generateToken());
-            sessionStorage.setItem("username", user.username);
-            sessionStorage.setItem("email", user.email);
           } else {
             setError("Account not found");
           }

@@ -35,10 +35,9 @@ function Signup() {
                     password: password
                 }
 
-                const existingUser = sessionStorage.getItem(email);
-                if(!existingUser){
-                    sessionStorage.setItem(email, JSON.stringify(user));
-                    window.location.href = "/";
+                const response = await axios.post("http://localhost:5000/api/auth/signup", user);
+                if(response.status === 200){
+                    window.location.href = "/login";
                     setFullName("");
                     setEmail("");
                     setPassword("");

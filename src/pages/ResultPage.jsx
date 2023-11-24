@@ -1,18 +1,32 @@
 import { useEffect, useState } from "react";
 import Header from "../components/common/Header";
 import {calculateScore} from "../functions/calculateScore";
-import { useQuestionContext } from "../QuestionProvider";
+import {getQuestion} from "../functions/getQuestion";
+import ButtonComponent from "../components/common/Button";
 
 export default function ResultPage() {
-    const { questionArray } = useQuestionContext();
-    let [userResponse, setUserResponse] = useState(JSON.parse(localStorage.getItem("userResponse")) || []);
     let [result, setResult] = useState({});
+    let [questionArray, setQuestionArray] = useState([]);
     useEffect(() => {
+        getData();
+        console.log(questionArray);
+        const userResponse = JSON.parse(localStorage.getItem("userResponse") || "[]");
         setResult(calculateScore(questionArray, userResponse));
-        setTimeout(() => {
-            localStorage.clear();
-        }, 5000);
-    })
+    },[questionArray]);
+
+    async function getData() {
+        const questions = await getQuestion("001q");
+        setQuestionArray(questions);
+    }
+
+    const handleExit = () => {
+        localStorage.setItem("currentQuestion", 1);
+            localStorage.removeItem("userResponse");
+            localStorage.removeItem("visitedQuestions");
+            localStorage.removeItem("flaggedQuestions");
+            localStorage.removeItem("timer");
+        window.location.href = "/";
+    }
     return (
         <div className="result-page">
             <Header />
@@ -40,6 +54,7 @@ export default function ResultPage() {
                                 </tr>
                         </tbody>
                     </table>
+                    <div onClick={handleExit}><ButtonComponent text="Exit" color="var(--white)" bgColor="var(--black)" /></div>
                 </div>
             </div>
         </div>
