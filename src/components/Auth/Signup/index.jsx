@@ -35,7 +35,7 @@ function Signup() {
                     password: password
                 }
 
-                const response = await axios.post("http://localhost:5000/api/auth/signup", user);
+                const response = await axios.post("https://quizine.onrender.com/api/auth/signup", user);
                 if(response.status === 200){
                     window.location.href = "/login";
                     setFullName("");

@@ -21,7 +21,7 @@ const Login = () => {
       if (email && password) {
         try {
           const response = await axios.post(
-            "http://localhost:5000/api/auth/login",
+            "https://quizine.onrender.com/api/auth/login",
             {
               email,
               password,
