@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 
-function Signup() {
+function Signup({setLoading}) {
   let[fullName,setFullName] = useState("");
     let[email,setEmail] = useState("");
     let[password,setPassword] = useState("");
@@ -27,6 +27,8 @@ function Signup() {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        setLoading(true);
+        setError("");
         if(fullName && email && password && confirmPassword){
             if(password === confirmPassword){
                 const user = {
@@ -37,6 +39,7 @@ function Signup() {
 
                 const response = await axios.post("https://quizine.onrender.com/api/auth/signup", user);
                 if(response.status === 200){
+                    setLoading(false);
                     window.location.href = "/login";
                     setFullName("");
                     setEmail("");
@@ -44,19 +47,23 @@ function Signup() {
                     setConfirmPassword("");
                 }
                 else{
+                    setLoading(false);
                     setError("User Already Exists");
                 }
             }else{
+                setLoading(false);
                 setError("Passwords do not match");
             }
         }
         else{
+            setLoading(false);
             setError("All fields are required");
         }
     }
 
   return (
-      <div className="signup">
+      <>
+        <div className="signup">
           <img className="signup-img" src={signupImg} />
           <form className="form-signup">
             <div className="login-title">
@@ -73,6 +80,7 @@ function Signup() {
                 <p className="signin">Already have an acount ? <Link to={"/login"}>Signin</Link> </p>
             </form>
       </div>
+      </>
   );
 }
 

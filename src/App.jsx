@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useState } from "react";
 import SignupPage from "./pages/SignupPage";
 import LandingPage from "./pages/LandingPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Loader from "./components/common/Loader";
+import Loader from "./components/common/Loader/CircularLoader";
 import AccountPage from "./pages/AccountPage";
 import QuizPage from "./pages/QuizPage";
 import ResultPage from "./pages/ResultPage";
