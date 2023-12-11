@@ -10,7 +10,7 @@ export default function Header() {
     const authToken = localStorage.getItem("auth_token");
     const handleLogout = () => {
         localStorage.removeItem("auth_token");
-        navigate("/login");
+        navigate("/");
     }
 
     const isloginMenu =     <div className="login-menu">
