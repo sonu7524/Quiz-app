@@ -29,8 +29,9 @@ export default function ResultPage() {
     return (
         <div className="result-page">
             <div className="result-wrapper">
-                <div className="result-container">
-                    <h1>Thanks for submitting the test.</h1>
+                <div >
+                    {result.totalQuestions > 0 ? <div className="result-container">
+                        <h1>Thanks for submitting the test.</h1>
                     <h2 style={{color: 'var(--blue)'}}>Your score is <b style={{color: 'green'}}>{result.totalScore}</b></h2>
                     <table>
                         <tbody>
@@ -53,6 +54,7 @@ export default function ResultPage() {
                         </tbody>
                     </table>
                     <div onClick={handleExit}><ButtonComponent text="Exit" color="var(--white)" bgColor="var(--black)" /></div>
+                    </div>: <h1>Please wait for your result to display.....</h1>}
                 </div>
             </div>
         </div>
