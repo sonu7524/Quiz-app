@@ -11,6 +11,7 @@ export default function Header() {
     const handleLogout = () => {
         localStorage.removeItem("auth_token");
         navigate("/");
+        window.location.reload();
     }
 
     const isloginMenu =     <div className="login-menu">

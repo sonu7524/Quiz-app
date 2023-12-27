@@ -131,7 +131,7 @@ background-color: #2ecc71; /* Visited question color */
     align-items: center;
     padding: 2rem 0rem;
     background-color: var(--lightpurple);
-    height: 79vh;
+    height: 90dvh;
 }
 .result-container{
   display: flex;

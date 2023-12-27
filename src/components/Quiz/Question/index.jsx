@@ -83,6 +83,7 @@ const QuestionComponent = ({questionObj, totalQuestions, setIsFlagged}) => {
     handleSaveAnswer(userResponse, setUserResponse);
     const confirm = window.confirm("Are you sure you want to submit?");
     if(confirm){
+      
       navigate(`/results`);
     }
   }

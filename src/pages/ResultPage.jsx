@@ -6,30 +6,28 @@ import ButtonComponent from "../components/common/Button";
 
 export default function ResultPage() {
     let [result, setResult] = useState({});
-    let [questionArray, setQuestionArray] = useState([]);
+    let [questionsArray, setQuestionsArray] = useState([]);
     useEffect(() => {
-        getData();
-        console.log(questionArray);
-        const userResponse = JSON.parse(localStorage.getItem("userResponse") || "[]");
-        setResult(calculateScore(questionArray, userResponse));
-    },[questionArray]);
+        getData(); 
+        const userResponse = JSON.parse(localStorage.getItem("userResponse"));
+        setResult(calculateScore(questionsArray, userResponse));
+    },[questionsArray]);
 
     async function getData() {
         const questions = await getQuestion("001q");
-        setQuestionArray(questions);
+        setQuestionsArray(questions);
     }
 
     const handleExit = () => {
         localStorage.setItem("currentQuestion", 1);
-            localStorage.removeItem("userResponse");
-            localStorage.removeItem("visitedQuestions");
-            localStorage.removeItem("flaggedQuestions");
-            localStorage.removeItem("timer");
+        localStorage.removeItem("userResponse");
+        localStorage.removeItem("visitedQuestions");
+        localStorage.removeItem("flaggedQuestions");
+        localStorage.removeItem("timer");
         window.location.href = "/";
     }
     return (
         <div className="result-page">
-            <Header />
             <div className="result-wrapper">
                 <div className="result-container">
                     <h1>Thanks for submitting the test.</h1>
