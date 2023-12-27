@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/common/Header";
 import {calculateScore} from "../functions/calculateScore";
 import {getQuestion} from "../functions/getQuestion";
 import ButtonComponent from "../components/common/Button";
 
 export default function ResultPage() {
+    const navigate = useNavigate();
     let [result, setResult] = useState({});
     let [questionsArray, setQuestionsArray] = useState([]);
     useEffect(() => {
@@ -24,7 +26,7 @@ export default function ResultPage() {
         localStorage.removeItem("visitedQuestions");
         localStorage.removeItem("flaggedQuestions");
         localStorage.removeItem("timer");
-        window.location.href = "/";
+        navigate("/");
     }
     return (
         <div className="result-page">
